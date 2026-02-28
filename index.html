@@ -3,29 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <title>Animator vs Animation Game</title>
-    <script>
-        window.RufflePlayer = window.RufflePlayer || {};
-        window.addEventListener("DOMContentLoaded", () => {
-            const ruffle = window.RufflePlayer.newest();
-            const player = ruffle.createPlayer();
-            document.body.appendChild(player);
-            player.style.width = "800px";
-            player.style.height = "600px";
-            player.load("Animator_vs_Animation_Game_Special_Edition.swf");
-        });
-    </script>
+
     <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+
     <style>
-        body {
+        html, body {
             margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
             background: black;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        }
+
+        #ruffle-container {
+            width: 100vw;
             height: 100vh;
         }
     </style>
 </head>
 <body>
+    <div id="ruffle-container"></div>
+
+    <script>
+        window.addEventListener("load", () => {
+            const ruffle = window.RufflePlayer.newest();
+            const player = ruffle.createPlayer();
+            document.getElementById("ruffle-container").appendChild(player);
+
+            player.style.width = "100%";
+            player.style.height = "100%";
+
+            player.load("Animator_vs_Animation_Game_Special_Edition.swf");
+        });
+    </script>
 </body>
 </html>
